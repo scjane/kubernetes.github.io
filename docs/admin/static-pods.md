@@ -26,7 +26,7 @@ For example, this is how to start a simple web server as a static pod:
 [joe@host ~] $ ssh my-node1
 ```
 
-2. Choose a directory, say `/etc/kubelet.d` and place a web server pod definition there, e.g. `/etc/kubernetes.d/static-web.yaml`:
+<ol start=2><li>Choose a directory, say `/etc/kubelet.d` and place a web server pod definition there, e.g. `/etc/kubernetes.d/static-web.yaml`:</ol></li>
 
 ```shell
 [root@my-node1 ~] $ mkdir /etc/kubernetes.d/
@@ -48,7 +48,7 @@ spec:
 EOF
 ```
 
-2. Configure your kubelet daemon on the node to use this directory by running it with `--pod-manifest-path=/etc/kubelet.d/` argument.  On Fedora edit `/etc/kubernetes/kubelet` to include this line:
+<ol start=3><li>Configure your kubelet daemon on the node to use this directory by running it with `--pod-manifest-path=/etc/kubelet.d/` argument.  On Fedora edit `/etc/kubernetes/kubelet` to include this line:</ol></li>
 
 ```conf
 KUBELET_ARGS="--cluster-dns=10.254.0.10 --cluster-domain=kube.local --pod-manifest-path=/etc/kubelet.d/"
@@ -56,7 +56,7 @@ KUBELET_ARGS="--cluster-dns=10.254.0.10 --cluster-domain=kube.local --pod-manife
 
 Instructions for other distributions or Kubernetes installations may vary.
 
-3. Restart kubelet. On Fedora, this is:
+<ol start=4><li>Restart kubelet. On Fedora, this is:</ol></li>
 
 ```shell
 [root@my-node1 ~] $ systemctl restart kubelet
@@ -68,7 +68,7 @@ Kubelet periodically downloads a file specified by `--manifest-url=<URL>` argume
 
 ## Behavior of static pods
 
-When kubelet starts, it automatically starts all pods defined in directory specified in `--pod-manifest-path=` or `--manifest-url=` arguments, i.e. our static-web.  (It may take some time to pull nginx image, be patient…):
+When kubelet starts, it automatically starts all pods defined in directory specified in `--pod-manifest-path=` or `--manifest-url=` arguments, i.e. our static-web  (It may take some time to pull nginx image, be patient…):
 
 ```shell
 [joe@my-node1 ~] $ docker ps
